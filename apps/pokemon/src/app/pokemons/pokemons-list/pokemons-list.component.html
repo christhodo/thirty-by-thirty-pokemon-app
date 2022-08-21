@@ -1,1 +1,31 @@
-<p>pokemons-list works!</p>
+<div class="pokemons-containers">
+  <div class="pokemons-list">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title> Pokemon List </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item
+            *ngFor="let pokemon of pokemons"
+            (click)="selected.emit(pokemon)"
+          >
+            <h3 matLine>{{ pokemon.name | titlecase }}</h3>
+            <p matLine>
+              {{ pokemon.type }}
+            </p>
+            <button
+              mat-icon-button
+              color="warn"
+              (click)="
+                deleted.emit(pokemon.id); $event.stopImmediatePropagation()
+              "
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

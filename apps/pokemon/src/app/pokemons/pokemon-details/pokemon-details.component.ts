@@ -1,12 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
+import { EventEmitter } from '@angular/core';
+import { Pokemon } from '../../common/models/pokemon';
 
 @Component({
   selector: 'pokemon-app-pokemon-details',
   templateUrl: './pokemon-details.component.html',
   styleUrls: ['./pokemon-details.component.scss'],
 })
-export class PokemonDetailsComponent implements OnInit {
-  constructor() {}
+export class PokemonDetailsComponent {
+  currentPokemon: Pokemon;
+  originalName = '';
 
-  ngOnInit(): void {}
+  @Output() saved = new EventEmitter();
+  @Output() cancelled = new EventEmitter();
+  @Input() set pokemon(value) {
+    if (!value) return;
+    this.currentPokemon = { ...value };
+    this.originalName = this.currentPokemon.name;
+  }
 }
