@@ -1,1 +1,17 @@
-<p>pokemons works!</p>
+<div class="pokemons-containers">
+  <div class="pokemons-list">
+    <pokemon-app-pokemons-list
+      [pokemons]="pokemons$ | async"
+      (selected)="selectPokemon($event)"
+      (deleted)="deletePokemon($event)"
+    >
+    </pokemon-app-pokemons-list>
+  </div>
+  <div class="pokemon-details">
+    <pokemon-app-pokemon-details
+      [pokemon]="selectedPokemon"
+      (cancelled)="reset()"
+      (saved)="savePokemon($event)"
+    ></pokemon-app-pokemon-details>
+  </div>
+</div>
