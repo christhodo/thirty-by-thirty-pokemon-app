@@ -2,6 +2,8 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
+    "environment": "libs/environment",
+    "material": "libs/material",
     "pokemon": "apps/pokemon",
     "pokemon-e2e": "apps/pokemon-e2e"
   }
